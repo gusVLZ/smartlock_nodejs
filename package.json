@@ -1,0 +1,29 @@
+{
+  "name": "first_ml",
+  "version": "1.0.0",
+  "description": "Tentativas com machine learning usando javascript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ml",
+    "javascript",
+    "js",
+    "node",
+    "hello-world"
+  ],
+  "author": "Gustavo Velozo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "mssql": "^6.2.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5",
+    "tedious": "^8.2.0"
+  },
+  "quokka": {
+    "babel": true
+  }
+}
