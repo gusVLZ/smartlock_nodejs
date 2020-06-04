@@ -16,6 +16,10 @@ const logTable = sequelize.define("log_table", {
         allowNull: false,
         type: Sequelize.STRING(50)
     },
+    dataCriacao:{
+        allowNull:true,
+        type: 'TIMESTAMP'
+    },
     json: {
         allowNull: true,
         type: Sequelize.STRING(1000)

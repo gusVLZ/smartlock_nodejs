@@ -1,9 +1,9 @@
 module.exports = {
     development: {
         database: {
-            user: 'admin',
+            user: 'gusVLZ',
             password: 'porta9',
-            host: '45.165.149.72',
+            host: '127.0.0.1',
             port: 3306,
             name: 'iotlocker',
             dialect: 'mysql'
@@ -11,9 +11,9 @@ module.exports = {
     },
     production: {
         database: {
-            user: 'admin',
+            user: 'gusVLZ',
             password: 'porta9',
-            host: '45.165.149.72',
+            host: '127.0.0.1',
             port: 3306,
             name: 'iotlocker',
             dialect: 'mysql'

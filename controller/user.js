@@ -1,18 +1,21 @@
 const axios = require("axios")
 const user = require("../model/user")
 
+
+
 exports.login = async (req, res, next) => {
+    console.log("Tentou logar")
     var resp = false;
     user.findAll({
         where: {
-            email: req.body.email,
+            username: req.body.username,
             password: req.body.password,
             ativo: 1
         }
     }).then(u=>{
         resp = u.length > 0;
         if(resp){
-            res.status(200).send("logado");
+            res.status(200).send(u[0]);
         }else{
             res.status(401).send("Credenciais inválidas")
         }
@@ -24,7 +27,7 @@ exports.login = async (req, res, next) => {
 exports.cadastrar = async (req, res, next) => {
     const userCad = user.build(req.body)
     userCad.save(user).then(criado=>{
-        res.status(200).send("Criado com sucesso")
+        res.status(200).send(criado)
     }).catch(err=>{
         res.status(500).send(err)
     })

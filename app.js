@@ -1,38 +1,54 @@
 const express = require('express')
-const http = require("http");
-const route = require('./routes/routes');
-//const sequelize = require("./database/database");
+const http = require("http")
+const route = require('./routes/routes')
+//const sequelize = require("./database/database")
 
-const app = express();
 
-app.use(express.json());
 
-app.get('/', (req, res)=>{
-    res.send("Parabens atrasado Gui!")
+const app = express()
+
+app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.redirect('/view/index.html')
 })
 
-app.use('/api', route);
+app.get('/hell', (req, res)=>{
 
-app.use((request, response, next)=>{
-    response.status(404).send();
-});
+    const parser = port.pipe(new Readline({ delimiter: '\n' }));
+    // Read the port data
+    port.on("open", () => {
+    console.log('serial port open');
+    });
+    parser.on('data', data =>{
+    console.log('got word from arduino:', data);
+    });
+    port.write('LED', (err) => {
+        if (err) {
+            res.send("err")
+        return console.log('Error on write: ', err.message);
+        }
+        console.log('message written');
+
+        res.send("Porta Aberta")
+    });
+
+})
+
+app.use('/view', express.static(__dirname+'\\view'));
+
+app.use('/api', route)
+
+app.use((request, response, next) => {
+    response.status(404).send()
+})
 
 app.use((error, request, response, next) => {
-    response.status(500).json({error});
+    response.status(500).json({
+        error
+    })
 })
 
-/*sequelize.sync({force:false}).then(() => {
-    const port = process.env.PORT || 3000;
-
-    app.set("port", port);
-
-    const server = http.createServer(app);
-
-    console.log(`Servidor rodando na porta ${port}`);
-
-    server.listen(port);
-});*/
-
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
-  });
+    console.log('Example app listening on port 3000!')
+})
