@@ -1,6 +1,7 @@
 const express = require('express')
 const http = require("http")
 const route = require('./routes/routes')
+const fs = require("fs");
 //const sequelize = require("./database/database")
 
 
@@ -11,6 +12,16 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     res.redirect('/view/index.html')
+})
+
+app.get("/download", (req, res)=>{
+    var file = fs.readFileSync(__dirname+"\\download\\smartlock.apk", 'binary');
+
+    //res.setHeader('Content-Length', ;
+    res.setHeader('Content-Type', 'application/apk');
+    res.setHeader('Content-Disposition', 'attachment; filename=smartlock.apk');
+    res.write(file, 'binary');
+    res.end();
 })
 
 app.get('/hell', (req, res)=>{

@@ -56,7 +56,7 @@ exports.openDoor = async (req, res, next) => {
     });
     port.write('LED', null,(err) => {
         if (err) {
-            res.status(500).send("err")
+            res.status(500).send("Erro ao abrir a porta")
             return console.log('Error on write: ', err.message);
         }
         
@@ -65,7 +65,7 @@ exports.openDoor = async (req, res, next) => {
             "ds_descricao": username+" abriu a porta"
         });
 
-        res.send("Ok")
+        res.send("Porta aberta com sucesso")
     });
 
     /*await axios.get("http://25.15.20.71:3000/api/opendoor").then(res =>{
